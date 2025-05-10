@@ -22,7 +22,7 @@ namespace JiroRandomPlayer2 {
             /// <summary>
             /// バージョン
             /// </summary>
-            public const string Version = "V1.0.0";
+            public const string Version = "V1.0.2";
         }
 
         /// <summary>

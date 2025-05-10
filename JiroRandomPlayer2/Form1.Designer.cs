@@ -22,7 +22,8 @@
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             TabMain = new TabControl();
             TabPagePlay = new TabPage();
@@ -32,6 +33,7 @@
             TabPageSettingMain = new TabPage();
             TabSetting = new TabControl();
             TabPageSortSetting = new TabPage();
+            LbElapseTime = new Label();
             BtTJARead = new Button();
             NmBPMMax = new NumericUpDown();
             label14 = new Label();
@@ -81,6 +83,8 @@
             label2 = new Label();
             NmTJCMusics = new NumericUpDown();
             label1 = new Label();
+            statusStrip1 = new StatusStrip();
+            PbReadTJA = new ToolStripProgressBar();
             TabMain.SuspendLayout();
             TabPagePlay.SuspendLayout();
             TabPagePlayCourse.SuspendLayout();
@@ -100,6 +104,7 @@
             ((System.ComponentModel.ISupportInitialize)NmMaxMusic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NmLife).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NmTJCMusics).BeginInit();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // TabMain
@@ -110,7 +115,7 @@
             TabMain.Location = new Point(12, 12);
             TabMain.Name = "TabMain";
             TabMain.SelectedIndex = 0;
-            TabMain.Size = new Size(451, 395);
+            TabMain.Size = new Size(451, 382);
             TabMain.TabIndex = 0;
             TabMain.SelectedIndexChanged += TabMain_SelectedIndexChanged;
             // 
@@ -120,7 +125,7 @@
             TabPagePlay.Location = new Point(4, 24);
             TabPagePlay.Name = "TabPagePlay";
             TabPagePlay.Padding = new Padding(3);
-            TabPagePlay.Size = new Size(443, 367);
+            TabPagePlay.Size = new Size(443, 354);
             TabPagePlay.TabIndex = 0;
             TabPagePlay.Text = "ランダム再生";
             TabPagePlay.UseVisualStyleBackColor = true;
@@ -131,7 +136,7 @@
             BtPlay.Font = new Font("Yu Gothic UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 128);
             BtPlay.Location = new Point(6, 6);
             BtPlay.Name = "BtPlay";
-            BtPlay.Size = new Size(431, 355);
+            BtPlay.Size = new Size(431, 342);
             BtPlay.TabIndex = 0;
             BtPlay.Text = "譜面再生";
             BtPlay.UseVisualStyleBackColor = true;
@@ -143,7 +148,7 @@
             TabPagePlayCourse.Location = new Point(4, 24);
             TabPagePlayCourse.Name = "TabPagePlayCourse";
             TabPagePlayCourse.Padding = new Padding(3);
-            TabPagePlayCourse.Size = new Size(443, 367);
+            TabPagePlayCourse.Size = new Size(443, 354);
             TabPagePlayCourse.TabIndex = 1;
             TabPagePlayCourse.Text = "ランダム段位再生";
             TabPagePlayCourse.UseVisualStyleBackColor = true;
@@ -154,7 +159,7 @@
             BtCoursePlay.Font = new Font("Yu Gothic UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 128);
             BtCoursePlay.Location = new Point(6, 6);
             BtCoursePlay.Name = "BtCoursePlay";
-            BtCoursePlay.Size = new Size(431, 355);
+            BtCoursePlay.Size = new Size(431, 342);
             BtCoursePlay.TabIndex = 1;
             BtCoursePlay.Text = "段位再生";
             BtCoursePlay.UseVisualStyleBackColor = true;
@@ -166,7 +171,7 @@
             TabPageSettingMain.Location = new Point(4, 24);
             TabPageSettingMain.Name = "TabPageSettingMain";
             TabPageSettingMain.Padding = new Padding(3);
-            TabPageSettingMain.Size = new Size(443, 367);
+            TabPageSettingMain.Size = new Size(443, 354);
             TabPageSettingMain.TabIndex = 2;
             TabPageSettingMain.Text = "設定";
             TabPageSettingMain.UseVisualStyleBackColor = true;
@@ -179,12 +184,13 @@
             TabSetting.Location = new Point(6, 6);
             TabSetting.Name = "TabSetting";
             TabSetting.SelectedIndex = 0;
-            TabSetting.Size = new Size(431, 355);
+            TabSetting.Size = new Size(431, 342);
             TabSetting.TabIndex = 5;
             TabSetting.SelectedIndexChanged += TabSetting_SelectedIndexChanged;
             // 
             // TabPageSortSetting
             // 
+            TabPageSortSetting.Controls.Add(LbElapseTime);
             TabPageSortSetting.Controls.Add(BtTJARead);
             TabPageSortSetting.Controls.Add(NmBPMMax);
             TabPageSortSetting.Controls.Add(label14);
@@ -213,14 +219,23 @@
             TabPageSortSetting.Location = new Point(4, 24);
             TabPageSortSetting.Name = "TabPageSortSetting";
             TabPageSortSetting.Padding = new Padding(3);
-            TabPageSortSetting.Size = new Size(423, 327);
+            TabPageSortSetting.Size = new Size(423, 314);
             TabPageSortSetting.TabIndex = 0;
             TabPageSortSetting.Text = "譜面ソート";
             TabPageSortSetting.UseVisualStyleBackColor = true;
             // 
+            // LbElapseTime
+            // 
+            LbElapseTime.AutoSize = true;
+            LbElapseTime.Location = new Point(6, 293);
+            LbElapseTime.Name = "LbElapseTime";
+            LbElapseTime.Size = new Size(67, 15);
+            LbElapseTime.TabIndex = 33;
+            LbElapseTime.Text = "経過時間：";
+            // 
             // BtTJARead
             // 
-            BtTJARead.Location = new Point(282, 265);
+            BtTJARead.Location = new Point(282, 252);
             BtTJARead.Name = "BtTJARead";
             BtTJARead.Size = new Size(135, 56);
             BtTJARead.TabIndex = 32;
@@ -424,6 +439,7 @@
             // CbAvgDensity
             // 
             CbAvgDensity.AutoSize = true;
+            CbAvgDensity.Enabled = false;
             CbAvgDensity.Location = new Point(6, 106);
             CbAvgDensity.Name = "CbAvgDensity";
             CbAvgDensity.Size = new Size(187, 19);
@@ -468,6 +484,7 @@
             // CbMusicTimeSort
             // 
             CbMusicTimeSort.AutoSize = true;
+            CbMusicTimeSort.Enabled = false;
             CbMusicTimeSort.Location = new Point(6, 81);
             CbMusicTimeSort.Name = "CbMusicTimeSort";
             CbMusicTimeSort.Size = new Size(128, 19);
@@ -491,7 +508,7 @@
             TabPageRandomTJC.Location = new Point(4, 24);
             TabPageRandomTJC.Name = "TabPageRandomTJC";
             TabPageRandomTJC.Padding = new Padding(3);
-            TabPageRandomTJC.Size = new Size(423, 327);
+            TabPageRandomTJC.Size = new Size(423, 314);
             TabPageRandomTJC.TabIndex = 1;
             TabPageRandomTJC.Text = "参照フォルダ設定";
             TabPageRandomTJC.UseVisualStyleBackColor = true;
@@ -499,7 +516,7 @@
             // CbSubDirExc
             // 
             CbSubDirExc.AutoSize = true;
-            CbSubDirExc.Location = new Point(6, 295);
+            CbSubDirExc.Location = new Point(6, 289);
             CbSubDirExc.Name = "CbSubDirExc";
             CbSubDirExc.Size = new Size(163, 19);
             CbSubDirExc.TabIndex = 9;
@@ -519,7 +536,7 @@
             // 
             // BtExcFolderDelete
             // 
-            BtExcFolderDelete.Location = new Point(187, 295);
+            BtExcFolderDelete.Location = new Point(187, 285);
             BtExcFolderDelete.Name = "BtExcFolderDelete";
             BtExcFolderDelete.Size = new Size(149, 23);
             BtExcFolderDelete.TabIndex = 7;
@@ -539,7 +556,7 @@
             // 
             // BtRef2
             // 
-            BtRef2.Location = new Point(342, 295);
+            BtRef2.Location = new Point(342, 285);
             BtRef2.Name = "BtRef2";
             BtRef2.Size = new Size(75, 23);
             BtRef2.TabIndex = 5;
@@ -564,7 +581,7 @@
             ListBoxExcludeFolderList.Location = new Point(6, 180);
             ListBoxExcludeFolderList.Name = "ListBoxExcludeFolderList";
             ListBoxExcludeFolderList.SelectionMode = SelectionMode.MultiExtended;
-            ListBoxExcludeFolderList.Size = new Size(411, 109);
+            ListBoxExcludeFolderList.Size = new Size(411, 94);
             ListBoxExcludeFolderList.TabIndex = 1;
             // 
             // label4
@@ -615,7 +632,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(423, 327);
+            tabPage1.Size = new Size(423, 314);
             tabPage1.TabIndex = 2;
             tabPage1.Text = "ランダム段位";
             tabPage1.UseVisualStyleBackColor = true;
@@ -741,11 +758,26 @@
             label1.TabIndex = 0;
             label1.Text = "コース内曲数";
             // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { PbReadTJA });
+            statusStrip1.Location = new Point(0, 397);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(475, 22);
+            statusStrip1.TabIndex = 1;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // PbReadTJA
+            // 
+            PbReadTJA.Name = "PbReadTJA";
+            PbReadTJA.Size = new Size(460, 16);
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(475, 419);
+            Controls.Add(statusStrip1);
             Controls.Add(TabMain);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
@@ -777,7 +809,10 @@
             ((System.ComponentModel.ISupportInitialize)NmMaxMusic).EndInit();
             ((System.ComponentModel.ISupportInitialize)NmLife).EndInit();
             ((System.ComponentModel.ISupportInitialize)NmTJCMusics).EndInit();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -841,5 +876,8 @@
         private Button BtTJARead;
         private CheckBox CbSubDirExc;
         private CheckBox CbSubDirRef;
+        private StatusStrip statusStrip1;
+        private ToolStripProgressBar PbReadTJA;
+        private Label LbElapseTime;
     }
 }

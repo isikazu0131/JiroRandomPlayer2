@@ -44,11 +44,6 @@ namespace JiroRandomPlayer2 {
                 return "";
             }
 
-            // tjcについての情報を表示
-            if(setting.CourseSetting.IsShowTJCInfo == true) {
-                ShowTJCInfo(selectedTJAs);
-            }
-
             // tjcを作成する
             string tjcPath = Write(selectedTJAs, jiroFInfo[0], setting);
 
@@ -62,6 +57,12 @@ namespace JiroRandomPlayer2 {
             } else {
                 MessageBox.Show("太鼓さん次郎が起動していません。", "ざんねん", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
+
+            // tjcについての情報を表示
+            if (setting.CourseSetting.IsShowTJCInfo == true) {
+                ShowTJCInfo(selectedTJAs);
+            }
+
             // TJCのパスを返す
             return tjcPath;
 

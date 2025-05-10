@@ -1,4 +1,5 @@
 using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Diagnostics;
 
 namespace JiroRandomPlayer2 {
     public partial class Form1 : Form {
@@ -111,8 +112,8 @@ namespace JiroRandomPlayer2 {
                 foreach (var file in fileDialog.FileNames) {
                     ListBoxReferringFolderList.Items.Add(file);
                 }
+                FlgSettingChange = true;
             }
-            FlgSettingChange = true;
         }
 
         /// <summary>
@@ -130,7 +131,6 @@ namespace JiroRandomPlayer2 {
                     ListBoxExcludeFolderList.Items.Add(file);
                 }
             }
-            FlgSettingChange = true;
         }
 
         /// <summary>
@@ -177,6 +177,8 @@ namespace JiroRandomPlayer2 {
                 for (int i = selectedIndices.Count - 1; i >= 0; i--) {
                     ListBoxReferringFolderList.Items.RemoveAt(selectedIndices[i]);
                 }
+                FlgSettingChange = true;
+
             }
         }
 
@@ -207,7 +209,9 @@ namespace JiroRandomPlayer2 {
                 FlgSettingChange = false;
             }
 
+            this.TopMost = true;
             var MakedTJC = TJC.Play(TJAs, setting);
+            this.TopMost = false;
             if (MakedTJC == "") {
                 return;
             }
@@ -570,6 +574,7 @@ namespace JiroRandomPlayer2 {
         }
 
         private void BtTJARead_Click(object sender, EventArgs e) {
+            Stopwatch stopwatch = Stopwatch.StartNew();
             // TJAのリストを取得
             // 既にメモリ内にTJAのリストがある場合(参照先フォルダの変更がなされていない場合)は何もしない
             // 参照先フォルダを設定していない場合
@@ -593,6 +598,7 @@ namespace JiroRandomPlayer2 {
             }
 
             ShowSortedTJACount();
+            LbElapseTime.Text = $"経過時間：{stopwatch.Elapsed.TotalSeconds:N3}秒";
         }
 
         private void TabMain_SelectedIndexChanged(object sender, EventArgs e) {
